@@ -80,8 +80,9 @@ weather_avg = weather_avg.sort_values('Rata-rata Penyewaan', ascending=False)
 
 fig1, axes = plt.subplots(1, 2, figsize=(14, 5))
 
+# Grafik Musim (Warna Seragam: steelblue)
 sns.barplot(data=season_avg, x='Musim', y='Rata-rata Penyewaan',
-            order=season_avg['Musim'], ax=axes[0], palette='Set2')
+            order=season_avg['Musim'], ax=axes[0], color='steelblue')
 axes[0].set_title('Rata-rata Penyewaan per Musim', fontsize=12, fontweight='bold')
 axes[0].set_xlabel('Musim')
 axes[0].set_ylabel('Rata-rata Jumlah Penyewaan')
@@ -90,8 +91,9 @@ for bar in axes[0].patches:
                      (bar.get_x() + bar.get_width() / 2, bar.get_height()),
                      ha='center', va='bottom', fontsize=9)
 
+# Grafik Cuaca (Warna Seragam: steelblue)
 sns.barplot(data=weather_avg, x='Cuaca', y='Rata-rata Penyewaan',
-            order=weather_avg['Cuaca'], ax=axes[1], palette='Set1')
+            order=weather_avg['Cuaca'], ax=axes[1], color='steelblue')
 axes[1].set_title('Rata-rata Penyewaan per Kondisi Cuaca', fontsize=12, fontweight='bold')
 axes[1].set_xlabel('Kondisi Cuaca')
 axes[1].set_ylabel('Rata-rata Jumlah Penyewaan')
@@ -106,9 +108,8 @@ st.pyplot(fig1)
 
 with st.expander("📌 Insight Pertanyaan 1"):
     st.write("""
-    - Musim **Fall** mencatat rata-rata penyewaan tertinggi, diikuti **Summer** dan **Winter**.
-    - Cuaca **Clear** menghasilkan penyewaan jauh lebih tinggi dibanding cuaca buruk.
-    - Cuaca **Light Snow/Rain** menurunkan penyewaan secara signifikan.
+    - **Musim:** Musim Gugur (*Fall*) mencatat rata-rata penyewaan tertinggi sebesar **5.644 penyewaan/hari**. Diikuti oleh musim *Summer* (4.992) dan *Winter* (4.728). Sebaliknya, penyewaan paling sepi terjadi pada musim *Spring* dengan rata-rata hanya **2.604 penyewaan/hari** (turun >50% dibandingkan musim *Fall*).
+    - **Cuaca:** Kondisi cuaca cerah (*Clear/Partly Cloudy*) menghasilkan rata-rata penyewaan tertinggi sebesar **4.877 penyewaan/hari**. Cuaca buruk seperti hujan/salju ringan (*Light Snow/Rain*) menurunkan penyewaan secara drastis hingga menyentuh angka **1.803 penyewaan/hari** (anjlok sekitar 63% dibanding hari cerah).
     """)
 
 st.markdown("---")
@@ -152,7 +153,7 @@ st.pyplot(fig2)
 
 with st.expander("📌 Insight Pertanyaan 2"):
     st.write("""
-    - Puncak penyewaan terjadi pada jam **08.00** dan **17.00–18.00**, mengikuti pola commuting.
-    - Pada **hari kerja**, pola bimodal (pagi & sore) sangat jelas.
-    - Pada **hari libur**, penyewaan lebih merata di siang hari (10.00–15.00).
+    - **Secara Keseluruhan:** Puncak penyewaan sepeda secara umum terjadi pada **pukul 17:00 (rata-rata 461 penyewaan)** dan **pukul 08:00 pagi (rata-rata 359 penyewaan)**.
+    - **Hari Kerja (Working Day):** Pola bimodal (dua puncak) sangat dominan karena dipengaruhi oleh mobilitas pekerja. Lonjakan tajam terlihat pada jam berangkat kerja pukul 08:00 (mendekati 500 penyewaan) dan jam pulang kerja pukul 17:00 (mencapai lebih dari 500 penyewaan).
+    - **Hari Libur (Non-Working Day):** Pola penyewaan berubah menjadi *unimodal* (merata di tengah hari). Permintaan mulai naik pada pukul 10:00 dan bertahan tinggi hingga pukul 15:00 dengan rata-rata di kisaran 360-380 penyewaan per jam, menunjukkan beralihnya fungsi sepeda ke aktivitas rekreasi.
     """)
