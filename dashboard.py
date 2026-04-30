@@ -156,6 +156,3 @@ with st.expander("📌 Insight Pertanyaan 2"):
     - Pada **hari kerja**, pola bimodal (pagi & sore) sangat jelas.
     - Pada **hari libur**, penyewaan lebih merata di siang hari (10.00–15.00).
     """)
-
-st.markdown("---")
-st.caption("Dashboard dibuat untuk proyek akhir kelas Analisis Data — Dicoding")
